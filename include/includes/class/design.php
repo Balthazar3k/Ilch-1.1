@@ -313,7 +313,11 @@ class design extends tpl {
     function get_boxcontent ($box)
     {
         global $lang, $allgAr, $menu,$ILCH_HEADER_ADDITIONS,$ILCH_BODYEND_ADDITIONS;
-        if (file_exists('include/boxes/' . $box)) {
+        if (file_exists('include/designs/' . $this->design . '/boxes/'.$box)) {
+            $pfad = 'include/designs/' . $this->design . '/boxes/'.$box;
+        } elseif (file_exists('include/designs/' . $this->design . '/boxes/'.$box.'.php')) {
+            $pfad = 'include/designs/' . $this->design . '/boxes/'.$box.'.php';
+        } elseif (file_exists('include/boxes/' . $box)) {
             $pfad = 'include/boxes/' . $box;
         } elseif (file_exists ('include/contents/selfbp/selfb/' . str_replace('self_', '', $box))) {
             $pfad = 'include/contents/selfbp/selfb/' . str_replace('self_', '', $box);

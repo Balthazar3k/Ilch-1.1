@@ -15,7 +15,11 @@ $menu = new menu();
 user_identification();
 site_statistic();
 
-require_once ('include/contents/'.$menu->get_url());
+if( file_exists('include/designs/'.$_SESSION['authgfx'].'/contents/'.$menu->get_url()) ){
+    require_once ('include/designs/'.$_SESSION['authgfx'].'/contents/'.$menu->get_url());
+} else {
+    require_once ('include/contents/'.$menu->get_url());
+}
 
 db_close();
 if (FALSE) { //debugging aktivieren
